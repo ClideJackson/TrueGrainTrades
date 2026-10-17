@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Truegrain Trades | Carpentry, Plumbing & Electrical</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --surface:#eef3f3; --ink:#0f2a2e; --muted:#4a6166; --line:#d5dfe0;
+  --brand:#0f2a2e; --on-brand:#ffffff; --accent:#b8782f; --accent-ink:#ffffff;
+  --head:'Sora',system-ui,sans-serif; --body:'Source Sans 3',system-ui,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1a1d; --surface:#122629; --ink:#e8f0f0; --muted:#9bb0b4; --line:#244045;
+    --brand:#e8f0f0; --on-brand:#0b1a1d; --accent:#d9964d; --accent-ink:#0b1a1d; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1a1d; --surface:#122629; --ink:#e8f0f0; --muted:#9bb0b4; --line:#244045;
+  --brand:#e8f0f0; --on-brand:#0b1a1d; --accent:#d9964d; --accent-ink:#0b1a1d; color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--body)}
+h1,h2,h3{font-family:var(--head);line-height:1.15;margin:0;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.btn{display:inline-block;padding:14px 26px;border-radius:6px;font:600 1rem var(--body);text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-ghost{border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font:700 1.15rem var(--head)}
+.logo svg{width:34px;height:34px}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;color:var(--muted);font-weight:600}
+.nav ul a:hover{color:var(--ink)}
+.nav .btn{padding:10px 20px}
+
+.hero{padding:88px 0 72px}
+.hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);max-width:15ch}
+.hero p.lead{margin:24px 0 32px;font-size:1.2rem;color:var(--muted);max-width:52ch}
+.hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+.trio{display:grid;gap:14px}
+.trio a{display:flex;align-items:center;gap:18px;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:6px;text-decoration:none}
+.trio a:hover{border-left-color:var(--ink)}
+.trio svg{width:36px;height:36px;flex:none;color:var(--accent)}
+.trio strong{display:block;font:700 1.05rem var(--head)}
+.trio span{color:var(--muted);font-size:.95rem}
+
+section{padding:80px 0}
+.alt{background:var(--surface)}
+.sec-head{max-width:620px;margin-bottom:48px}
+.sec-head h2{font-size:clamp(1.7rem,3.4vw,2.3rem)}
+.sec-head p{margin-top:14px;color:var(--muted)}
+
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.svc{padding:32px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.svc svg{width:40px;height:40px;color:var(--accent);margin-bottom:20px}
+.svc h3{font-size:1.3rem;margin-bottom:12px}
+.svc p{color:var(--muted)}
+.svc ul{margin:18px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.svc li{padding:10px 0;border-bottom:1px solid var(--line);font-size:.98rem}
+
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.why h3{font-size:1.05rem;margin-bottom:8px}
+.why p{color:var(--muted);font-size:.98rem}
+.why div{padding-top:18px;border-top:3px solid var(--accent)}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px}
+.details{display:grid;gap:22px;align-content:start}
+.details dt{font:700 .95rem var(--head)}
+.details dd{margin:4px 0 0;color:var(--muted)}
+form{display:grid;gap:18px;padding:32px;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label{display:grid;gap:6px;font-weight:600;font-size:.95rem}
+input,select,textarea{font:400 1rem var(--body);padding:12px 14px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%}
+textarea{min-height:120px;resize:vertical}
+#msg{font-weight:600;min-height:1.4em}
+
+footer{background:var(--brand);color:var(--on-brand);padding:48px 0 32px}
+.foot{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.foot p{opacity:.8;font-size:.95rem;max-width:46ch}
+.legal{margin-top:32px;padding-top:20px;border-top:1px solid color-mix(in srgb,var(--on-brand) 25%,transparent);font-size:.88rem;opacity:.8}
+
+@media (max-width:900px){
+  .hero-grid,.contact-grid{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr}
+  .why{grid-template-columns:1fr 1fr}
+  .nav ul{display:none}
+  .hero{padding:56px 0 48px}
+  section{padding:56px 0}
+}
+@media (max-width:520px){.why,.row{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Truegrain Trades home">
+      <svg viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="7" fill="currentColor" style="color:var(--brand)"/><path d="M9 24c3-1 4-4 4-7s1-6 4-7c3 1 4 4 4 7s1 6 4 7" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/></svg>
+      Truegrain Trades
+    </a>
+    <nav aria-label="Main"><ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+    <a class="btn btn-primary" href="#contact">Get a quote</a>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>One team for your woodwork, pipes and wiring.</h1>
+      <p class="lead">Qualified tradespeople who show up on time, quote clearly and leave the job clean. From a new kitchen to a burst pipe to a full rewire.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#contact">Request a free quote</a>
+        <a class="btn btn-ghost" href="tel:+27715737749">071 573 7749</a>
+      </div>
+    </div>
+    <div class="trio">
+      <a href="#services">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 27 23 9l4 4L9 31H5z"/><path d="M20 12l4 4M28 6l2 2"/></svg>
+        <div><strong>Carpentry</strong><span>Built-in cupboards, doors, decks, repairs</span></div>
+      </a>
+      <a href="#services">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 5c5 7 8 11 8 15a8 8 0 0 1-16 0c0-4 3-8 8-15z"/></svg>
+        <div><strong>Plumbing</strong><span>Leaks, geysers, bathrooms, drainage</span></div>
+      </a>
+      <a href="#services">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 3 8 20h9l-2 13 13-18h-9z"/></svg>
+        <div><strong>Electrical</strong><span>Wiring, DB boards, lighting, compliance</span></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<section id="services" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>What we do</h2>
+      <p>Three trades under one roof, so you deal with one quote, one schedule and one point of contact.</p>
+    </div>
+    <div class="services">
+      <article class="svc">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 27 23 9l4 4L9 31H5z"/><path d="M20 12l4 4"/></svg>
+        <h3>Carpentry</h3>
+        <p>Custom woodwork made to measure and fitted properly.</p>
+        <ul><li>Kitchen and bedroom cupboards</li><li>Doors, frames and windows</li><li>Decks, pergolas and ceilings</li><li>Furniture repair and restoration</li></ul>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 5c5 7 8 11 8 15a8 8 0 0 1-16 0c0-4 3-8 8-15z"/></svg>
+        <h3>Plumbing</h3>
+        <p>Fast fixes for emergencies and careful work on new installations.</p>
+        <ul><li>Leak detection and burst pipes</li><li>Geyser installation and repair</li><li>Bathroom and kitchen plumbing</li><li>Blocked drains and sewer lines</li></ul>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 3 8 20h9l-2 13 13-18h-9z"/></svg>
+        <h3>Electrical</h3>
+        <p>Safe, tested installations with the paperwork to prove it.</p>
+        <ul><li>Wiring, rewiring and DB boards</li><li>Plugs, switches and lighting</li><li>Fault finding and repairs</li><li>Certificate of Compliance (CoC)</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head"><h2>Why customers choose us</h2></div>
+    <div class="why">
+      <div><h3>Registered and qualified</h3><p>Licensed tradespeople for every job.</p></div>
+      <div><h3>Written quotes</h3><p>You see the full price before work starts.</p></div>
+      <div><h3>Tidy work</h3><p>We protect your floors and clean up after.</p></div>
+      <div><h3>Guaranteed</h3><p>If something is wrong, we come back and fix it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="alt">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="sec-head"><h2>Get a free quote</h2><p>Tell us what you need. We reply within one working day.</p></div>
+      <dl class="details">
+        <div><dt>Phone and WhatsApp</dt><dd>[071 573 7749]</dd></div>
+        <div><dt>Email</dt><dd>info@truegraintrades.co.za</dd></div>
+        <div><dt>Address</dt><dd>584 Amarillis Street - Pretoria</dd></div>
+        <div><dt>Hours</dt><dd>Mon to Fri 07:30 to 17:00, Sat 08:00 to 14:00. Emergency call-outs by arrangement.</dd></div>
+      </dl>
+    </div>
+    <form id="quote" novalidate>
+      <div class="row">
+        <label>Your name<input name="name" autocomplete="name" required></label>
+        <label>Phone number<input name="phone" type="tel" autocomplete="tel" required></label>
+      </div>
+      <label>Service needed
+        <select name="service" required>
+          <option value="">Choose a service</option>
+          <option>Carpentry</option><option>Plumbing</option><option>Electrical</option><option>More than one</option>
+        </select>
+      </label>
+      <label>Describe the job<textarea name="job" required></textarea></label>
+      <button class="btn btn-primary" type="submit">Send quote request</button>
+      <p id="msg" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><strong style="font:700 1.15rem var(--head)">Truegrain Trades</strong><p style="margin-top:10px">Carpentry, plumbing and electrical services for homes and small businesses.</p></div>
+      <p>[Gauteng, Limpopo, Mpumalanga]</p>
+    </div>
+    <div class="legal">Registration: [COMPANY REG NO.] · Electrical: [REGISTERED ELECTRICIAN NO.] · Plumbing: [PIRB NO.] · © 2026 Truegrain Trades</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('quote').addEventListener('submit',function(e){
+  e.preventDefault();
+  var f=e.target,m=document.getElementById('msg');
+  if(!f.name.value.trim()||!f.phone.value.trim()||!f.service.value||!f.job.value.trim()){
+    m.textContent='Please fill in your name, phone number, service and a short description.';return;
+  }
+  m.textContent='Thank you, '+f.name.value.trim()+'. We will call you within one working day.';
+  f.reset();
+});
+</script>
+</body>
+</html>
